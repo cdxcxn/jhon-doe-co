@@ -1,0 +1,41 @@
+$primary-background: #cccccc;
+$selected-background: #999999;
+$hover-background: #666666;
+$primary-text: #000000;
+$secondary-text: #ffffff;
+
+.header {
+    background-color: $primary-background;
+}
+
+.nav-bar {
+    &__list {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        line-height: 45px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        text-transform: uppercase;
+
+        &-link{
+            color: $primary-text;
+            margin: 0 20px;
+            padding: 14px 15px;
+            text-decoration: none;
+
+            &:hover {
+                background-color: $hover-background;
+                color: $secondary-text;
+            }
+
+            &--selected {
+                background-color: $selected-background;
+            }
+        }
+    }
+}
