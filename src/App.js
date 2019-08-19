@@ -1,15 +1,12 @@
 import React from 'react';
-import { Toolbar } from 'react-md';
-// import logo from './logo.svg';
-import './App.css'
+import Header from './components/Header';
+import Main from './components/Main';
 
-function App() {
-  return (
-    <Toolbar
-      themed
-      title="Jhon Doe co."
-    />
-  );
-}
+const App = () => (
+  <div>
+    <Header />
+    <Main />
+  </div>
+);
 
 export default App;
