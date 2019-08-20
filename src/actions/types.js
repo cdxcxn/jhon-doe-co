@@ -1,0 +1,3 @@
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const CATEGORY_CHANGE = 'CATEGORY_CHANGE';
+export const LOADING = 'LOADING';

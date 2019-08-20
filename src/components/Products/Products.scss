@@ -1,0 +1,76 @@
+$element-background: #ffffff;
+$selected-background: #eeeeee;
+$loading-color: #000;
+$selected-color: rgba(0, 0, 0, 0.87);
+
+.md-list-item--selected {
+    background-color: $selected-background;
+    color: $selected-color;
+
+    & .md-text--theme-primary {
+        color: $selected-color;
+    }
+}
+
+.products {
+    display: flex;
+
+    &__product-list {
+        flex-grow: 1;
+    }
+
+    &__loading-wrapper {
+        text-align: center;
+    }
+
+    &__side-panel {
+        flex-grow: 0;
+        background-color: $element-background;
+        border-right: $selected-background 1px solid;
+        min-width: 350px;
+    }
+
+    &__card-content {
+        display: flex;
+
+        &-image-container {
+            flex-grow: 0;
+            min-width: 130px;
+        }
+
+        &-image {
+            margin: 0px 15px;
+            max-width: 100px;
+        }
+
+        &-info {
+            flex-grow: 1;
+        }
+    }
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    margin-top: 70px;
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid $loading-color;
+    border-color: $loading-color transparent $loading-color transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

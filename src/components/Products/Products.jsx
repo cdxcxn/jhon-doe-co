@@ -1,14 +1,12 @@
 import React from 'react';
-import { Card, CardText, CardTitle } from 'react-md';
+import CategoriesPanel from './CategoriesPanel';
+import ProductList from './ProductList';
+import './Products.css';
 
 const Products = () => (
-  <Card className="md-cell md-cell--12 md-text-container">
-    <CardTitle title="Products" />
-    <CardText>
-      <p>
-        Products contents!
-      </p>
-    </CardText>
-  </Card>
+  <section className='products'>
+    <CategoriesPanel />
+    <ProductList />
+  </section>
 );
 export default Products;
