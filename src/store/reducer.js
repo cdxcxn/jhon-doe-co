@@ -1,4 +1,12 @@
-import { CATEGORY_CHANGE, FETCH_PRODUCTS, LOADING } from '../actions/types';
+import {
+    CATEGORY_CHANGE,
+    FETCH_PRODUCTS,
+    LOADING,
+    VIEW_TYPE_CHANGE,
+    CONTACT_CHANGE,
+    CONTACT_SEND,
+    CLEAR_RESPONSE,
+} from '../actions/types';
 
 const initialState = {
     categories: [
@@ -27,7 +35,14 @@ const initialState = {
     searchText: null,
     viewType: 'list',
     products: [],
+    showedProducts: 0,
+    hiddenProducts: 0,
     loading: true,
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    contactResponse: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -47,12 +62,38 @@ const reducer = (state = initialState, action) => {
         case FETCH_PRODUCTS:
             return {
                 ...state,
-                products: action.products
+                products: action.products,
+                showedProducts: action.showedProducts,
+                hiddenProducts: action.hiddenProducts,
             }
         case LOADING:
             return {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+            }
+        case VIEW_TYPE_CHANGE:
+            return {
+                ...state,
+                viewType: action.newViewType,
+            }
+        case CONTACT_CHANGE:
+            return {
+                ...state,
+                [action.field]: action.value,
+            }
+        case CONTACT_SEND:
+            return {
+                ...state,
+                firstName: '',
+                lastName: '',
+                email: '',
+                subject: '',
+                contactResponse: action.contactResponse,
+            }
+        case CLEAR_RESPONSE:
+            return {
+                ...state,
+                contactResponse: null,
             }
         default:
             return state;

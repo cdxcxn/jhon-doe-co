@@ -12,6 +12,9 @@ import { CATEGORY_CHANGE } from '../../actions/types';
 import { fetchAllProducts } from '../../actions/index';
 
 const CategoriesPanel = (props) => {
+    if(props.router.match.category) {
+        props.onCategorySelected(props.router.match.category);
+    }
     return(
         <aside className='products__side-panel'>
             <List>
@@ -27,7 +30,7 @@ const CategoriesPanel = (props) => {
                                         activeBoxClassName='md-list-item--selected'
                                         leftAvatar={<Avatar icon={<FontIcon>{category.icon}</FontIcon>} />}
                                         primaryText={category.text}
-                                        onClick={() => props.onCategorySelected(category.text)}
+                                        onClick={() => props.onCategorySelected(category.text, props.router)}
                                     />
                                     <Divider />
                                 </div>
@@ -40,7 +43,7 @@ const CategoriesPanel = (props) => {
                                     activeBoxClassName='md-list-item--selected'
                                     leftAvatar={<Avatar icon={<FontIcon>{category.icon}</FontIcon>} />}
                                     primaryText={category.text}
-                                    onClick={() => props.onCategorySelected(category.text)}
+                                    onClick={() => props.onCategorySelected(category.text, props.router)}
                                 />
                             );
                         }
@@ -54,12 +57,14 @@ const CategoriesPanel = (props) => {
 const mapStateToProps = (state) => {
     return {
         categories: state.categories,
+        selectedCategory: state.selectedCategory,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onCategorySelected: (category) => {
+        onCategorySelected: (category, router) => {
+            router.history.push(category === 'All' ? '/products' : `/products/${category}`);
             dispatch({ type: CATEGORY_CHANGE, newCategory: category });
             dispatch(fetchAllProducts(category));
         }

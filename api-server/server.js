@@ -15,8 +15,13 @@ router.route('/products')
         const dataJsonPath = './data/products.json'
         const rawdata = fs.readFileSync(dataJsonPath);
         const products = JSON.parse(rawdata);
+        const responseData = {
+            products,
+            showing: products.length,
+            hidden: 0,
+        }
         console.log('api/products consumed!');
-        res.json(products);
+        res.json(responseData);
     });
 
 router.route('/products/:category')
@@ -30,9 +35,26 @@ router.route('/products/:category')
                 (category) => category === categoryRequested
                 )
             );
-
+        const responseData = {
+            products: filteredProducts,
+            showing: filteredProducts.length,
+            hidden: products.length - filteredProducts.length,
+        }
         console.log(`api/products/${categoryRequested} consumed!`);
-        res.json(filteredProducts);
+        res.json(responseData);
+    });
+
+router.route('/contact')
+    .post((req, res) => {
+        const contactInfo = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            subject: req.body.subject,
+        };
+        console.log('Contact info recieved!!!!');
+        console.log(contactInfo);
+        res.json({ funnyResponse: ':D' });
     });
 
 app.use('/api', router);

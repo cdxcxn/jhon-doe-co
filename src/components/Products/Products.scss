@@ -16,7 +16,20 @@ $selected-color: rgba(0, 0, 0, 0.87);
     display: flex;
 
     &__product-list {
+        display: flex;
         flex-grow: 1;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        height: calc(100vh - 125px);
+        overflow-y: scroll;
+    }
+
+    &__product-card {
+        display: block;
+        flex-basis: 1%;
+        flex-grow: 2;
+        max-width: 350px;
+        min-width: 300px;
     }
 
     &__loading-wrapper {
@@ -45,6 +58,21 @@ $selected-color: rgba(0, 0, 0, 0.87);
 
         &-info {
             flex-grow: 1;
+        }
+    }
+
+    &__top-panel {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+    }
+
+    &__view-type-button {
+        cursor: pointer;
+        opacity: 0.4;
+
+        &--selected {
+            opacity: 1;
         }
     }
 }

@@ -1,0 +1,28 @@
+.contact {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 55px);
+        overflow-y: scroll;
+        margin-top: 10px;
+    }
+
+    &__card {
+        margin: 20px 20px 0;
+    }
+
+    &__card-footer {
+        justify-content: flex-end;
+        margin-right: 25px;
+        margin-bottom: 15px;    
+    }
+
+    &__submit{
+        color: #000;
+
+        &:disabled{
+            color: #999;
+        }
+    }
+}
